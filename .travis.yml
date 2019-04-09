@@ -14,12 +14,14 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
 
-before_script:
-  - echo SECVAR="${SECVAR}" >> gradle.properties
-  - cat gradle.properties
+#before_script:
+#  - echo SECVAR="${SECVAR}" >> gradle.properties
+#  - cat gradle.properties
 
 before_install:
   - chmod +x gradlew
 
 script:
+  - echo SECVAR="${SECVAR}" >> gradle.properties
+  - cat gradle.properties
   - ./gradlew clean check
