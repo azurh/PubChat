@@ -20,8 +20,8 @@ android:
 
 before_install:
   - chmod +x gradlew
+  - echo SECVAR="\"${SECVAR}\"" >> gradle.properties
+  - cat gradle.properties
 
 script:
-  - echo SECVAR="${SECVAR}" >> gradle.properties
-  - cat gradle.properties
   - ./gradlew clean check
