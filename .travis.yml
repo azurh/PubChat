@@ -15,7 +15,7 @@ android:
     - extra-android-m2repository
 
 before_script:
-  - echo $'\SECVAR="${SECVAR}"' >> gradle.properties
+  - echo $'\SECVAR=${SECVAR}' >> gradle.properties
 
 before_install:
   - chmod +x gradlew
