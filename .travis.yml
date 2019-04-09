@@ -15,7 +15,7 @@ jdk:
 #    - extra-android-m2repository
 
 before_script:
-  - echo $'SECVAR=${SECVAR}' >> gradle.properties
+  - echo SECVAR="${SECVAR}" >> gradle.properties
   - cat gradle.properties
 
 before_install:
