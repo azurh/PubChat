@@ -5,17 +5,18 @@ sudo: required
 jdk:
 - oraclejdk8
 
-android:
-  components:
-    - tools
-    - platform-tools
-    - build-tools-28.0.3
-    - android-28
-    - extra-google-m2repository
-    - extra-android-m2repository
+#android:
+#  components:
+#    - tools
+#    - platform-tools
+#    - build-tools-28.0.3
+#    - android-28
+#    - extra-google-m2repository
+#    - extra-android-m2repository
 
 before_script:
-  - echo $'\SECVAR=${SECVAR}' >> gradle.properties
+  - echo $'SECVAR=${SECVAR}' >> gradle.properties
+  - cat gradle.properties
 
 before_install:
   - chmod +x gradlew
