@@ -1,11 +1,11 @@
 package com.azureus.pubchat;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.pubnub.api.PNConfiguration;
 import com.pubnub.api.PubNub;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +25,5 @@ public class MainActivity extends AppCompatActivity {
         pnConfiguration.setPublishKey("demo");
         pnConfiguration.setUuid("android_test");
         mPubNub = new PubNub(pnConfiguration);
-        Log.d("test_confid", "SECVAR: " + BuildConfig.SECVAR);
     }
 }

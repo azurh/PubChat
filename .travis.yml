@@ -3,7 +3,7 @@ language: android
 sudo: required
 
 jdk:
-- oraclejdk8
+  - oraclejdk8
 
 android:
   components:
@@ -18,6 +18,12 @@ android:
 #  - echo SECVAR="${SECVAR}" >> gradle.properties
 #  - cat gradle.properties
 
+before_script:
+  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
+
 before_install:
   - chmod +x gradlew
   - echo SECVAR="\"${SECVAR}\"" >> gradle.properties
@@ -25,3 +31,4 @@ before_install:
 
 script:
   - ./gradlew clean check
+  - ./gradlew connectedAndroidTest
