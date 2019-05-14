@@ -9,10 +9,12 @@ android:
   components:
     - tools
     - platform-tools
-    - build-tools-28.0.3
-    - android-28
+    - build-tools-26.0.2
+    - android-26
     - extra-google-m2repository
     - extra-android-m2repository
+    - extra-google-google_play_services
+    - sys-img-x86-android-26
 
 #before_script:
 #  - echo SECVAR="${SECVAR}" >> gradle.properties
@@ -20,7 +22,7 @@ android:
 
 before_script:
   - android list targets
-  - echo no | android create avd --force -n test -t android-28 --abi google_apis/armeabi-v7a -c 100M
+  - echo no | android create avd --force -n test -t android-26 --abi armeabi-v7a -c 100M
   - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
@@ -33,3 +35,12 @@ before_install:
 script:
   - ./gradlew clean check
   - ./gradlew connectedAndroidTest
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cach
